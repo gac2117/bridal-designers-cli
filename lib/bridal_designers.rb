@@ -1,6 +1,2 @@
-require "bridal_designers/version"
-
-module BridalDesigners
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./bridal_designers/version"
+require_relative "./bridal_designers/cli"

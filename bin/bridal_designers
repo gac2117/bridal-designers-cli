@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative './lib/bridal_designers'
+
+BridalDesigners::CLI.new.call
