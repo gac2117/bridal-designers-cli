@@ -8,7 +8,7 @@ class BridalDesigners::CLI
 
   def list_designers
     puts "Here is a list of bridal designers at Gilded Bridal:"
-    @designers = BridalDesigners::Designer.designers
+    @designers = BridalDesigners::Designer.all
   end
 
   def choose_designer
