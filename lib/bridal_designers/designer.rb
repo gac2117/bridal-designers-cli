@@ -4,15 +4,15 @@ class BridalDesigners::Designer
 
   @@all = []
 
-#  def self.create_from_page(d)
-#    self.new(
-#      d.css("h2.gallery-title").text, # designer name
-#      d.css("p").text, # location
-#      d.css("p").text, # description
-#      d.css('a')[0].attributes["href"].value, # url
-#    )
-#  end
-#
+  def self.create_from_page(d)
+    self.new(
+      d.search("a.gallery-link").text, # designer name
+      d.search("p").first.text, # location
+      d.search("p").text, # description
+      d.search("a.gallery-link").attr("href").value, # url
+    )
+  end
+
 #  def initialize(name=nil, location=nil, description=nil, url=nil)
 #    @name = name
 #    @location = location
