@@ -8,7 +8,8 @@ class BridalDesigners::CLI
   end
 
   def list_designers
-    puts "hello world"
+    puts "Designer 1"
+    puts "Designer 2"
   end
 
   def choose_designer
@@ -16,15 +17,17 @@ class BridalDesigners::CLI
     input = gets.strip
     case input
     when "1"
-      puts "Designer 1"
+      puts "Designer 1 details"
     when "2"
-      puts "Designer 2"
+      puts "Designer 2 details"
+    else
+      puts "Please choose from among one of the listed designers."
     end
     closing
   end
 
   def closing
-    puts "Would you like to see another designer? Y / N"
+    puts "Would you like to see the list of designers again? Y / N"
     input = gets.strip.downcase
     case input
     when "y"
