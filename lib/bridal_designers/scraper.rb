@@ -6,8 +6,6 @@ class BridalDesigners::Scraper
 
   def scrape_designers
     self.get_page.css(".wpb_wrapper")
-    scrape_designers
-    binding.pry
   end
 
   def make_designers
