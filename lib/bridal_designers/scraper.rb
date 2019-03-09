@@ -2,8 +2,8 @@ class BridalDesigners::Scraper
 
   def self.scrape_designers
     page = Nokogiri::HTML(open("https://www.gildedbridal.com/bridal-designers"))
-    binding.pry
     scraped_designers = page.css(".wpb_wrapper")
+    binding.pry
     scraped_designers
   end
 
