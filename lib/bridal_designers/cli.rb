@@ -5,7 +5,6 @@ class BridalDesigners::CLI
     puts "Here is a list of bridal designers at Gilded Bridal:"
     list_designers
     choose_designer
-    closing
   end
 
   def list_designers
@@ -21,15 +20,17 @@ class BridalDesigners::CLI
     when "2"
       puts "Designer 2"
     end
+    closing
   end
 
   def closing
     puts "Would you like to see another designer? Y / N"
-    input = gets.strip
+    input = gets.strip.downcase
     case input
-    when "Y"
+    when "y"
+      list_designers
       choose_designer
-    when "N"
+    when "n"
       puts "Good luck with your wedding! Goodbye."
     end
   end
