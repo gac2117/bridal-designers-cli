@@ -2,14 +2,13 @@ class BridalDesigners::CLI
 
   def call
     puts "Are you looking for the perfect wedding dress?"
-    puts "Here is a list of bridal designers at Gilded Bridal:"
     list_designers
     choose_designer
   end
 
   def list_designers
-    puts "Designer 1"
-    puts "Designer 2"
+    puts "Here is a list of bridal designers at Gilded Bridal:"
+    @designers = BridalDesigners::Designer.designers
   end
 
   def choose_designer
