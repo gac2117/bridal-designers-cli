@@ -4,20 +4,13 @@ class BridalDesigners::Designer
 
   @@all = []
 
-  def scrape_designers
-    page = Nokogiri::HTML(open("https://www.gildedbridal.com/bridal-designers"))
-    designers = Array.new
-    scraped_designers = page.css(".wpb_wrapper")
-    scrape_designers.each do |d|
-      designer = {
-        name: d.search("a.gallery-link").text, # designer name
-        location: d.search("p").first.text, # location
-        description: d.search("p").text, # description
-        url: d.search("a.gallery-link").attr("href").value, # url
-      }
-      designers << designer
-    end
-    designers
+  def self.create_from_page(d)
+    self.new(
+      d.search("a.gallery-link").text, # designer name
+      d.search("p").first.text, # location
+      d.search("p").text, # description
+      d.search("a.gallery-link").attr("href").value, # url
+    )
   end
 
   def initialize(name=nil, location=nil, description=nil, url=nil)
