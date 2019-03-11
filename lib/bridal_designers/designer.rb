@@ -6,8 +6,8 @@ class BridalDesigners::Designer
 
   def self.create_from_page(d)
     self.new(
-      d.search("a.gallery-link").text, # designer name
-      d.search("p").first.text, # location
+      d.search("h2").text, # designer name
+      d.search("p").text, # location
       d.search("p").text, # description
       d.search("a.gallery-link").attr("href").value, # url
     )
