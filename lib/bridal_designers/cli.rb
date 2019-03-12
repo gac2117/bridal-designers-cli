@@ -19,11 +19,13 @@ class BridalDesigners::CLI
   def choose_designer
     puts "Which designer would you like to know more about? Please choose a number."
     input = gets.strip.downcase
-    if input.to_i > 0
+    if input.to_i == 0
+      puts "Please choose from among one of the listed designers."
+    elsif input.to_i > 15
+      puts "Please choose from among one of the listed designers."
+    else
       the_designer = BridalDesigners::Designer.all[input.to_i-1]
       puts "#{the_designer.name} from #{the_designer.location}! #{the_designer.description} For more information, go to #{the_designer.url}."
-    else
-      puts "Please choose from among one of the listed designers."
     end
     closing
   end
