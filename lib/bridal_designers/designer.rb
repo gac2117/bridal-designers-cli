@@ -19,7 +19,7 @@ class BridalDesigners::Designer
         designer[:location] = d.css("p")[0].text
         designer[:description] = d.css('p')[1].text
       end
-      designer[:url] = d.css('h2.gallery-title a').map { |e| e.attribute('href').value}
+      designer[:url] = d.css('h2.gallery-title a').map { |e| e.attribute('href').value}.first
       designers << designer
     end
     designers
