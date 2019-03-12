@@ -33,12 +33,14 @@ class BridalDesigners::CLI
   def closing
     puts "Would you like to see the list of designers again? Y / N"
     input = gets.strip.downcase
-    case input
-    when "y"
+    if input == "y"
       list_designers
       choose_designer
-    when "n"
+    elsif input == "n"
       puts "Good luck with your wedding! Goodbye."
+    else
+      puts "Please enter Y or N"
+      closing
     end
   end
 end
