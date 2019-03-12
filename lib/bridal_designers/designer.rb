@@ -34,7 +34,6 @@ class BridalDesigners::Designer
 
   def initialize(d)
     d.each {|key, value| self.send(("#{key}="), value)}
-    binding.pry
     @@all << self
   end
 

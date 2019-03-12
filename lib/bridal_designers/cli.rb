@@ -1,6 +1,8 @@
 class BridalDesigners::CLI
 
   def call
+    BridalDesigners::Designer.scrape_designers
+    BridalDesigners::Designer.create_from_array
     puts "Are you looking for the perfect wedding dress?"
     list_designers
     choose_designer
