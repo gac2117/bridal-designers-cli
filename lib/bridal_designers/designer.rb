@@ -11,14 +11,15 @@ class BridalDesigners::Designer
     scraped_designers = gowns.css(".q_elements_item_inner")
     scraped_designers.each do |d|
       designer = {
-        name: d.css("h2").text,
-        location: d.css("p")[0].text,
-        description: d.css("p")[1].text,
-        url: d.css("a.gallery-link").attr("href").value
+        name: d.css("h2").text.strip,
+        location: d.css("p")[0].text.strip,
+        description: d.css("p")[1].text.strip,
+        url: d.css("a.gallery-link").attr("href").strip
       }
       designers << designer
     end
     designers
+    binding.pry
   end
 
   def initialize(designers)
