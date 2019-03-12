@@ -5,6 +5,7 @@ class BridalDesigners::Designer
   @@all = []
 
   def self.scrape_designers
+    designers = Array.new
     page = Nokogiri::HTML(open("https://www.gildedbridal.com/bridal-designers"))
     gowns = page.css("div.qode-advanced-tab-container").first
     scraped_designers = gowns.css(".q_elements_item_inner")
@@ -15,23 +16,13 @@ class BridalDesigners::Designer
         description: d.css("p")[1].text,
         url: d.css("a.gallery-link").attr("href").value
       }
+      designers << designer
     end
+    designers
   end
 
-  def self.create_from_page(d)
-    self.new(
-      d.search("h2").text, # designer name
-      d.search("p").text, # location
-      d.search("p").text, # description
-      d.search("a.gallery-link").attr("href").value, # url
-    )
-  end
-
-  def initialize(name=nil, location=nil, description=nil, url=nil)
-    @name = name
-    @location = location
-    @description = description
-    @url = url
+  def initialize(designers)
+    designers.each {|key, value| self.send(("#{key}="), value)}
     @@all << self
   end
 
