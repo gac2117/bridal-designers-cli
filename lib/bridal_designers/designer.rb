@@ -25,14 +25,16 @@ class BridalDesigners::Designer
     designers
   end
 
-  def self.create_from_array(designers)
-    designers.each do |designer|
-      Designer.new(designer)
+  def self.create_from_array
+    designers_hash = self.scrape_designers
+    designers_hash.each do |d|
+      BridalDesigners::Designer.new(d)
     end
   end
 
-  def initialize(designers)
-    designers.each {|key, value| self.send(("#{key}="), value)}
+  def initialize(d)
+    d.each {|key, value| self.send(("#{key}="), value)}
+    binding.pry
     @@all << self
   end
 

@@ -8,8 +8,8 @@ class BridalDesigners::CLI
 
   def list_designers
     puts "Here is a list of bridal designers at Gilded Bridal:"
-    @designers = BridalDesigners::Designer.all
-    @designers.each.with_index(1) do |designer, i|
+    designers = BridalDesigners::Designer.all
+    designers.each.with_index(1) do |designer, i|
       puts "#{i}. #{designer.name}"
     end
   end
