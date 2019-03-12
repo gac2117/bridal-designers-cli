@@ -8,18 +8,22 @@ class BridalDesigners::Designer
     designers = Array.new
     page = Nokogiri::HTML(open("https://www.gildedbridal.com/bridal-designers"))
     gowns = page.css("div.qode-advanced-tab-container").first
-    scraped_designers = gowns.css(".q_elements_item_inner")
+    scraped_designers = gowns.css("div.wpb_text_column div")
     scraped_designers.each do |d|
-      designer = {
-        name: d.css("h2").text.strip,
-        location: d.css("p")[0].text.strip,
-        description: d.css("p")[1].text.strip,
-        url: d.css("a.gallery-link").attr("href").strip
-      }
+      designer = {}
+      designer[:name] = d.css("h2").text
+      if d.css('p') != nil
+        designer[:location] = d.css("p")[0].text
+        designer[:description] = d.css('p')[1].text
+      else
+        designer[:location] = d.css("div")[0].text
+        designer[:description] = d.css('div')[1].text
+      end
+      designer[:url] = d.css('h2.gallery-title a').map { |e| e.attribute('href').value}
       designers << designer
+      binding.pry
     end
     designers
-    binding.pry
   end
 
   def initialize(designers)
