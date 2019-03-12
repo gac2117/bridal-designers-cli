@@ -6,9 +6,9 @@ class BridalDesigners::Designer
 
   def self.scrape_designers
     page = Nokogiri::HTML(open("https://www.gildedbridal.com/bridal-designers"))
-    scraped_designers = page.css(".qode-advanced-tab-container").first
+    gowns = page.css("div.qode-advanced-tab-container").first
+    scraped_designers = gowns.css(".q_elements_item_inner")
     scraped_designers.each do |d|
-      details = d.css("p")
       designer = {
         name: d.css("h2").text,
         location: d.css("p")[0].text,
