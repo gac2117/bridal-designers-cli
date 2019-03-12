@@ -25,7 +25,13 @@ class BridalDesigners::CLI
       puts "Please choose from among one of the listed designers."
     else
       the_designer = BridalDesigners::Designer.all[input.to_i-1]
-      puts "#{the_designer.name} from #{the_designer.location}! #{the_designer.description} For more information, go to #{the_designer.url}."
+      puts "Designer: #{the_designer.name} from #{the_designer.location}!"
+      puts "Description: #{the_designer.description}"
+      if the_designer.url.nil?
+        puts "There is no website available for this designer."
+      else
+        puts "For more information, go to #{the_designer.url}."
+      end
     end
     closing
   end
