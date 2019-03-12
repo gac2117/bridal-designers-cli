@@ -22,8 +22,13 @@ class BridalDesigners::Designer
       designer[:url] = d.css('h2.gallery-title a').map { |e| e.attribute('href').value}
       designers << designer
     end
-    binding.pry
     designers
+  end
+
+  def self.create_from_array(designers)
+    designers.each do |designer|
+      Designer.new(designer)
+    end
   end
 
   def initialize(designers)
@@ -33,18 +38,6 @@ class BridalDesigners::Designer
 
   def self.all
     @@all
-#  designer_1 = self.new
-#  designer_1.name = "Grace"
-#  designer_1.location = "Raleigh"
-#  designer_1.description = "hello"
-#  designer_1.url = "www.hi.com"
-#  @@all << designer_1
-
-#  designer_2 = self.new
-#  designer_2.name = "Amy"
-#  designer_2.location = "Atlanta"
-#  designer_2.description = "goodbye"
-#  designer_2.url = "www.bye.com"
-#  @@all << designer_2
   end
+
 end
