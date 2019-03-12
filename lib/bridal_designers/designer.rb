@@ -13,10 +13,10 @@ class BridalDesigners::Designer
       designer = {}
       designer[:name] = d.css("h2").text
       if d.search('p').empty?
-        designer[:location] = d.css(".wpb_wrapper").first.css('div')[0].text
+        designer[:location] = d.css(".wpb_wrapper").first.css('div')[0].text.capitalize
         designer[:description] = d.css(".wpb_wrapper").first.css('div')[2].text
       else
-        designer[:location] = d.css("p")[0].text
+        designer[:location] = d.css("p")[0].text.capitalize
         designer[:description] = d.css('p')[1].text
       end
       designer[:url] = d.css('h2.gallery-title a').map { |e| e.attribute('href').value}.first
